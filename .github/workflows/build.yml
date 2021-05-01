@@ -1,0 +1,31 @@
+# Build Jekyll Page and publish it to GitHub Pages
+name: Build SparqlMap Release
+
+on:
+  push:
+    branches: [ feature/deploy ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Jekyll-RDF Site ⚙️
+      run: |
+           docker run --rm \
+           --workdir /github/workspace \
+           -v ${{ github.workspace }}:/github/workspace \
+           openjdk:8 \
+           ./gradlew installDist
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: 'sparqlmap.zip'
+        directory: 'sparqlmap-client/build/install/sparqlmap-client'
+    - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+            artifacts: "sparqlmap.zip"
+            token: ${{ secrets.GITHUB_TOKEN }}
