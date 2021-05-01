@@ -28,5 +28,5 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-          artifacts: "sparqlmap.zip"
+          artifacts: "sparqlmap-client/build/install/sparqlmap-client/sparqlmap.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
