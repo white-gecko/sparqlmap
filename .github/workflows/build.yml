@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build Jekyll-RDF Site ⚙️
+    - name: Build with Gradle ⚙️
       run: |
            docker run --rm \
            --workdir /github/workspace \
