@@ -4,6 +4,7 @@ name: Build SparqlMap Release
 on:
   push:
     branches: [ feature/deploy ]
+    tags: ['*']
 
 jobs:
   build:
