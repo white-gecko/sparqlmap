@@ -1,9 +1,7 @@
-# Build Jekyll Page and publish it to GitHub Pages
 name: Build SparqlMap Release
 
 on:
   push:
-    branches: [ feature/deploy ]
     tags: ['*']
 
 jobs:
@@ -28,5 +26,5 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-          artifacts: "sparqlmap-client/build/install/sparqlmap-client/sparqlmap.zip"
+          artifacts: 'sparqlmap-client/build/install/sparqlmap-client/sparqlmap.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
